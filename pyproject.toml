@@ -1,65 +1,9 @@
-# contents of pyproject.toml
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[tool.hatch]
-version.source = "vcs"
-build.hooks.vcs.version-file = "src/example/version.py"
-
 [project]
-name = "example"
-description = "A great package."
+name = "fuzzy-palm-tree"
+version = "0.1.0"
+description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "Lee Hyunwoo", email = "hyunwoo9174@outlook.com" },
-]
 requires-python = ">=3.9"
-
 dependencies = [
-    "numpy",
-]
-
-classifiers = [
-    "Development Status :: 4 - Beta",
-    "License :: OSI Approved :: BSD License",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Topic :: Scientific/Engineering :: Physics",
-]
-
-[project.urls]
-Homepage = "https://github.com/HyunwooLee955/example"
-Documentation = "https://example.readthedocs.io/"
-"Bug Tracker" = "https://github.com/HyunwooLee955/example/issues"
-Discussions = "https://github.com/organization/example/discussions"
-Changelog = "https://example.readthedocs.io/en/latest/changelog.html"
-
-[project.optional-dependencies]
-test = [
-    "pytest >=6.0",
-]
-mpl = [
-    "matplotlib >=2.0",
-]
-docs = [
-    "furo",
-    "sphinx >=4.0",
-    "myst-parser >=0.13",
-    "sphinx-copybutton",
-    "sphinx-autodoc-typehints",
-]
-
-[tool.pytest.ini_options]
-minversion = "6.0"
-addopts = ["-ra", "--showlocals", "--strict-markers", "--strict-config"]
-xfail_strict = true
-filterwarnings = ["error"]
-log_cli_level = "info"
-testpaths = [
-    "tests",
+    "numpy>=2.0.2",
 ]

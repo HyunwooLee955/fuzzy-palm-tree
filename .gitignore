@@ -1,0 +1,9 @@
+# sphinx build
+docs/build/
+
+# cache
+__pycache__/
+.pytest_cache/
+
+# python env
+.venv/
