@@ -1,7 +1,16 @@
+# contents of noxfile.py
 import argparse
 
 import nox
 
+
+@nox.session
+def tests(session: nox.Session) -> None:
+    """
+    Run the unit and regular tests.
+    """
+    session.install(".[test]")
+    session.run("pytest", *session.posargs)
 
 @nox.session(reuse_venv=True)
 def docs(session: nox.Session) -> None:
@@ -11,10 +20,10 @@ def docs(session: nox.Session) -> None:
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-b", dest="builder", default="html", help="Bild target (default: html)"
+        "-b", dest="builder", default="html", help="Build target (default: html)"
     )
     parser.add_argument("output", nargs="?", help="Output directory")
-    args, posargs = parser.parse_know_args(session.posargs)
+    args, posargs = parser.parse_known_args(session.posargs)
     serve = args.builder == "html" and session.interactive
 
     session.install("-e.[docs]", "sphinx-autobuild")
@@ -29,24 +38,6 @@ def docs(session: nox.Session) -> None:
     )
 
     if serve:
-        session.run("sphinx-autobild", "--open-browser", *shared_args)
+        session.run("sphinx-autobuild", "--open-browser", *shared_args)
     else:
         session.run("sphinx-build", "--keep-going", *shared_args)
-
-
-@nox.session
-def build_api_docs(session: nox.Session) -> None:
-    """
-    Build (regenerate) API docs.
-    """
-
-    session.install("sphinx")
-    session.run(
-        "sphinx-apidoc",
-        "-o",
-        "docs/api/",
-        "--module-first",
-        "--no-toc",
-        "--force",
-        "src/example",
-    )
