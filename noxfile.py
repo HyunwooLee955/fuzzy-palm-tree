@@ -12,6 +12,7 @@ def tests(session: nox.Session) -> None:
     session.install(".[test]")
     session.run("pytest", *session.posargs)
 
+
 @nox.session(reuse_venv=True)
 def docs(session: nox.Session) -> None:
     """
